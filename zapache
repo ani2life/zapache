@@ -144,10 +144,10 @@ case "$CASE_VALUE" in
 	value="`awk '/^BytesPerReq:/ {print $2}' < \"$cache\"`"
 	rval=$?;;
 'BusyWorkers')
-	value="`awk '/^BusyWorkers:/ {print $2}' < \"$cache\"`"
+	value="`awk '/^BusyWorkers:/ {print $2; exit}' < \"$cache\"`"
 	rval=$?;;
 'IdleWorkers')
-	value="`awk '/^IdleWorkers:/ {print $2}' < \"$cache\"`"
+	value="`awk '/^IdleWorkers:/ {print $2; exit}' < \"$cache\"`"
 	rval=$?;;
 'WaitingForConnection')
 	value="`awk '/^Scoreboard:/ {print split($2,notused,"_")-1}' < \"$cache\"`"
